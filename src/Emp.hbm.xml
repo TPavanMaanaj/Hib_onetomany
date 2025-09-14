@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="Dept" table="dept">
+		<id name="deptno" column="deptno" type="integer">
+			<generator class="increment" />
+		</id>
+		<property name="deptname" type="string" unique="true"/>
+		<property name="loc" type="string" />
+		<bag name="empList" cascade="all">
+			<key column="deptno"/>
+			<one-to-many class="Emp"/>
+		</bag>
+	</class>
+
+	<class name="Emp" table="emp">
+		<id name="eid" column="eid" type="integer">
+			<generator class="increment" />
+		</id>
+		<property name="ename" type="string" />
+		<property name="sal" type="double" />
+		<property name="desig" type="string" />
+		<many-to-one name="dept" class="Dept"/> 
+	</class>
+</hibernate-mapping>

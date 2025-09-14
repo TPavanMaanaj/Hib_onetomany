@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Oracle JDBC driver -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!-- Replace XE with your Oracle service name or SID -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hib_emp_db</property>
+
+        <!-- Replace with your Oracle username and password -->
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+
+        <!-- Oracle Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Schema management -->
+<!--
+         <property name="hibernate.hbm2ddl.auto">update</property>
+-->
+        <!-- Show SQL in console -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- Your mapping file -->
+        <mapping resource="Emp.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
